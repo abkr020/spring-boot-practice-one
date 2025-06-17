@@ -2,12 +2,18 @@ package com.practice.one.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class UserDTO {
     private Long id;
+    @NotBlank(message = "- email is required -")
+    @Email(message = "- email should be valid -")
     private String email;
     // @JsonIgnore
     // @JsonProperty(access = JsonProperty)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotBlank(message = "- pass in required -")
     private String pass;
 
     public Long getId() {

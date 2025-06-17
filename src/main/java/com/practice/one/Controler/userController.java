@@ -9,13 +9,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.practice.one.DTO.UserDTO;
 import com.practice.one.Services.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(path = "auth")
 public class userController {
     @Autowired
     private UserService userService;
     @PostMapping(path = "/signup")
-    public UserDTO signup(@RequestBody UserDTO userDTO){
+    public UserDTO signup(@Valid @RequestBody UserDTO userDTO){
         System.out.println("signup user dto -- " + userDTO);
         return userService.signup(userDTO);
     }
